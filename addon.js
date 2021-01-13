@@ -3,7 +3,9 @@ const { cacheWrapMeta, cacheWrapCatalog } = require('./lib/cache');
 const cinemeta = require('./lib/cinemeta_client')
 const tmdb = require('./lib/tmdb_client')
 
-const CACHE_MAX_AGE = process.env.CACHE_MAX_AGE || 7 * 24 * 60; // 7 days
+const CACHE_MAX_AGE = process.env.CACHE_MAX_AGE || 24 * 60 * 60; // 24 hours
+const STALE_REVALIDATE_AGE = 4 * 60 * 60; // 4 hours
+const STALE_ERROR_AGE = 60 * 24 * 60 * 60; // 60 days
 
 const manifest = {
   id: 'community.tmdb.alternatives',
@@ -37,7 +39,7 @@ builder.defineCatalogHandler((args) => {
   }
 
   return cacheWrapCatalog(args.id, () => getCatalogMetas())
-      .then((metas) => ({ metas: metas, cacheMaxAge: CACHE_MAX_AGE }));
+      .then((metas) => ({ metas: metas, ...cacheVariables() }));
 });
 
 builder.defineMetaHandler((args) => {
@@ -51,11 +53,15 @@ builder.defineMetaHandler((args) => {
   }
 
   return cacheWrapMeta(id, () => tmdb.getTmdbMetadata(series)
-      .then((meta) => ({ meta: meta, cacheMaxAge: CACHE_MAX_AGE })));
+      .then((meta) => ({ meta: meta, ...cacheVariables() })));
 });
 
 async function getCatalogMetas() {
   return Promise.all(seriesData.map(series => cinemeta.getCinemetaCatalogMetadata(series)));
+}
+
+function cacheVariables() {
+  return { cacheMaxAge: CACHE_MAX_AGE, staleRevalidate: STALE_REVALIDATE_AGE, staleError: STALE_ERROR_AGE };
 }
 
 module.exports = builder.getInterface();
