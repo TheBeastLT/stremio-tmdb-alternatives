@@ -15,7 +15,6 @@
     "jaro-winkler": "^0.2.8",
     "moviedb-promise": "^3.1.6",
     "needle": "^2.6.0",
-    "stremio-addon-sdk": "^1.6.4",
-    "tmdb-js": "git://github.com/david98hall/tmdb-js.git#master"
+    "stremio-addon-sdk": "^1.6.4"
   }
 }
