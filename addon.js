@@ -9,7 +9,7 @@ const STALE_ERROR_AGE = 60 * 24 * 60 * 60; // 60 days
 
 const manifest = {
   id: 'community.tmdb.alternatives',
-  version: '0.0.1',
+  version: '0.0.2',
   name: 'TMDB Alternatives',
   description: 'Provides a catalog for a few series (Netflix and similar) in alternative order.',
   logo: 'https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg',
@@ -21,6 +21,7 @@ const manifest = {
       id: 'tmdb-alternatives',
       name: 'TMDB Alternatives',
       type: 'series',
+      extra: [{ name: 'search', isRequired: false }],
     }
   ],
 };
@@ -37,6 +38,13 @@ const builder = new addonBuilder(manifest);
 builder.defineCatalogHandler((args) => {
   if (args.id !== manifest.catalogs[0].id) {
     return Promise.reject(`Unsupported catalog id: ${args.id}`);
+  }
+
+  if (args.extra && args.extra.search) {
+    return tmdb.getSearchTmdbIds(args.extra.search, seriesData)
+        .then(tmdbIds => cacheWrapCatalog(args.id, () => getCatalogMetas())
+            .then(metas => metas.filter(meta => tmdbIds.includes(meta.id.split(':')[1]))))
+        .then((metas) => ({ metas: metas, ...cacheVariables() }));
   }
 
   return cacheWrapCatalog(args.id, () => getCatalogMetas())
