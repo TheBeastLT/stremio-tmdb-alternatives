@@ -29,6 +29,7 @@ const manifest = {
 const seriesData = [
   { imdbId: 'tt6468322', tmdbId: '71446', episodeGroupId: '5eb730dfca7ec6001f7beb51', name: "Money Heist" },
   { imdbId: 'tt7569592', tmdbId: '79242', episodeGroupId: '5ca7dd6f0e0a264c8bf0a62e', name: "Chilling Adventures of Sabrina" },
+  { imdbId: 'tt5363918', tmdbId: '73021', episodeGroupId: '5d881805b76cbb0017e2c76a', name: "Disenchantment" },
   { imdbId: 'tt2930604', tmdbId: '60554', episodeGroupId: '5b57d247c3a3685c85041004', name: "Star Wars Rebels" },
   { imdbId: 'tt0458290', tmdbId: '4194', episodeGroupId: '5b11ba820e0a265847002c6e', name: "Star Wars: The Clone Wars", watchOrderOnly: true }
 ];
