@@ -15,7 +15,7 @@ const manifest = {
   logo: 'https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg',
   resources: ['catalog', 'meta'],
   types: ['series'],
-  idPrefixes: ['tmdb'],
+  idPrefixes: ['tmdba'],
   catalogs: [
     {
       id: 'tmdb-alternatives',
@@ -30,6 +30,7 @@ const seriesData = [
   { imdbId: 'tt6468322', tmdbId: '71446', episodeGroupId: '5eb730dfca7ec6001f7beb51', name: "Money Heist" },
   { imdbId: 'tt7569592', tmdbId: '79242', episodeGroupId: '5ca7dd6f0e0a264c8bf0a62e', name: "Chilling Adventures of Sabrina" },
   { imdbId: 'tt5363918', tmdbId: '73021', episodeGroupId: '5d881805b76cbb0017e2c76a', name: "Disenchantment" },
+  { imdbId: 'tt2531336', tmdbId: '96677', episodeGroupId: '6074e65418864b00439afa4f', name: "Lupin" },
   { imdbId: 'tt2930604', tmdbId: '60554', episodeGroupId: '5b57d247c3a3685c85041004', name: "Star Wars Rebels" },
   { imdbId: 'tt0458290', tmdbId: '4194', episodeGroupId: '5b11ba820e0a265847002c6e', name: "Star Wars: The Clone Wars", watchOrderOnly: true }
 ];
@@ -53,7 +54,7 @@ builder.defineCatalogHandler((args) => {
 });
 
 builder.defineMetaHandler((args) => {
-  if (!args.id.match(/^tmdb:\d+$/)) {
+  if (!args.id.match(/^tmdba:\d+$/)) {
     return Promise.reject(`Unsupported meta id: ${args.id}`);
   }
   const id = args.id.split(':')[1];
