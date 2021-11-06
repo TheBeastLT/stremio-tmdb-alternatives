@@ -31,6 +31,7 @@ const seriesData = [
   { imdbId: 'tt7569592', tmdbId: '79242', episodeGroupId: '5ca7dd6f0e0a264c8bf0a62e', name: "Chilling Adventures of Sabrina" },
   { imdbId: 'tt5363918', tmdbId: '73021', episodeGroupId: '5d881805b76cbb0017e2c76a', name: "Disenchantment" },
   { imdbId: 'tt2531336', tmdbId: '96677', episodeGroupId: '6074e65418864b00439afa4f', name: "Lupin" },
+  { imdbId: 'tt9153270', tmdbId: '87093', episodeGroupId: '5e9e34cdeec5b5001a40e71f', name: "Family Reunion" },
   { imdbId: 'tt2930604', tmdbId: '60554', episodeGroupId: '5b57d247c3a3685c85041004', name: "Star Wars Rebels" },
   { imdbId: 'tt0458290', tmdbId: '4194', episodeGroupId: '5b11ba820e0a265847002c6e', name: "Star Wars: The Clone Wars", watchOrderOnly: true }
 ];
