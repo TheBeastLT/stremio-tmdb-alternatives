@@ -9,10 +9,10 @@ const STALE_ERROR_AGE = 60 * 24 * 60 * 60; // 60 days
 
 const manifest = {
   id: 'community.tmdb.alternatives',
-  version: '0.0.2',
+  version: '0.0.3',
   name: 'TMDB Alternatives',
   description: 'Provides a catalog for a few series (Netflix and similar) in alternative order.',
-  logo: 'https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg',
+  logo: 'https://i.imgur.com/D3zPfEq.png',
   resources: ['catalog', 'meta'],
   types: ['series'],
   idPrefixes: ['tmdba'],
